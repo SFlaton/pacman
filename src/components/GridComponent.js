@@ -1,17 +1,33 @@
 import React from 'react';
 
-const gridStyle = {
-  width: "38px",
-  height: "38px",
-  backgroundColor: "#ccc",
-  float: "left",
-  border: "1px solid #fff"
-}
-
 class GridComponent extends React.Component {
+  getBackGroundColor() {
+    if (this.props.boat) {
+      return "#cfc";
+    }
+
+    return "#ccc";
+  }
+  getGridStyle() {
+    let backgroundColor = this.getBackGroundColor();
+
+    return {
+      width: "38px",
+      height: "38px",
+      backgroundColor: backgroundColor,
+      float: "left",
+      border: "1px solid #fff"
+    };
+  }
+
+  onClick() {
+    this.props.onClick(this.props.index);
+  }
+
   render() {
+    let gridStyle = this.getGridStyle();
     return (
-      <div style={gridStyle}></div>
+      <div style={gridStyle} onClick={this.onClick.bind(this)}></div>
     )
   }
 }

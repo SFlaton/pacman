@@ -51,7 +51,11 @@
     "webpack-hot-middleware": "2.6.0"
   },
   "dependencies": {
-    "react": "0.14.3",
-    "react-dom": "0.14.3"
+    "feathers-client": "^1.2.0",
+    "material-ui": "^0.14.4",
+    "react": "^0.14.8",
+    "react-dom": "0.14.3",
+    "react-tap-event-plugin": "^0.2.2",
+    "socketio": "^1.0.0"
   }
 }

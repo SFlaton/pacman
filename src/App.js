@@ -22,7 +22,7 @@ class App extends React.Component {
     };
 
     this.state = {
-      bombs: [], 
+      bombs: [],
       clicked: []
     };
 
@@ -69,6 +69,7 @@ class App extends React.Component {
       let index = this.getBombIndex(cell);
       console.log(cell);
       alert("KABOOM, YOU DIE!!!!");
+      location.reload();
     } else {
       clicked.push(cell)
       this.setState({

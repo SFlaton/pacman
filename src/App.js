@@ -70,18 +70,17 @@ class App extends React.Component {
       })
     }
   }
-
   neighbourBombs(key) {
       let bombsFound = 0
 
       let coord = [-11, -10, -9, -1, 1, 9, 10, 11]
       for (let i=0; i < coord.length; i++) {
         let check = key + coord[i]
+
         if (check > -1 ){
           bombsFound += this.state.bombs.filter(function(bomb){
             return bomb === check
           }).length
-
         }
       }
       return bombsFound
@@ -99,9 +98,6 @@ class App extends React.Component {
           {this.grid.map(function(key) {
             return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.findBomb.bind(this)}/>);
           }.bind(this))}
-          <div>
-
-          </div>
         </div>
       </div>);
   }

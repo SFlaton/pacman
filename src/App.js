@@ -97,7 +97,7 @@ class App extends React.Component {
       <div>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
-            return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.addBomb.bind(this)}/>);
+            return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.findBomb.bind(this)}/>);
           }.bind(this))}
           <div>
 

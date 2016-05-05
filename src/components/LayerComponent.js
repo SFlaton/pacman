@@ -1,16 +1,14 @@
 import React from 'react';
 
-class GridComponent extends React.Component {
+class LayerComponent extends React.Component {
   getBackGroundColor() {
     if (this.props.boat) {
-      return "#ccc";
+      return "#FF0000";
     }
-    if (this.props.click){
-      return "#cfc"
-    }
+
     return "#ccc";
   }
-  getGridStyle() {
+  getLayerStyle() {
     let backgroundColor = this.getBackGroundColor();
 
     return {
@@ -27,11 +25,11 @@ class GridComponent extends React.Component {
   }
 
   render() {
-    let gridStyle = this.getGridStyle();
+    let layerStyle = this.getLayerStyle();
     return (
-      <div style={gridStyle} onClick={this.onClick.bind(this)}></div>
+      <div style={layerStyle} onClick={this.onClick.bind(this)}></div>
     )
   }
 }
 
-export default GridComponent;
+export default LayerComponent;

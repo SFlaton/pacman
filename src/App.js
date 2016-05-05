@@ -9,6 +9,10 @@ const boardStyle = {
   margin: "auto"
 };
 
+const clickedStyle = {
+  backgroundColor: "#cfc",
+}
+
 class App extends React.Component {
   constructor() {
     super();
@@ -19,7 +23,8 @@ class App extends React.Component {
     };
 
     this.state = {
-      boats: [1,4,6,14,35,16,27, 55, 88, 24, 84, 90, 95, 29, 30 ]
+      boats: [1,4,6,14,35,16,27, 55, 88, 24, 84, 90, 95, 29, 30 ],
+      clicked: [],
     };
   }
 
@@ -35,6 +40,16 @@ class App extends React.Component {
     return hasBoat.length > 0;
   }
 
+  cellIsClicked(cell) {
+    let isClicked = this.state.clicked.filter(function(click){
+      if (click === cell) {
+        return true;
+      } else{
+        return false;
+      }
+    })
+  }
+
   getBoatIndex(cell) {
     if (this.cellHasBoat(cell)) {
       return this.state.boats.findIndex(function(boat) {
@@ -45,12 +60,15 @@ class App extends React.Component {
 
   addBoat(cell) {
     let boats = this.state.boats;
+    let clicked = this.state.clicked;
 
     if (this.cellHasBoat(cell)) {
       let index = this.getBoatIndex(cell);
-      console.log("kaboom");
+      alert("KABOOM, YOU DIE!!!!");
     } else {
-      console.log("no kaboom, you live");
+      alert("no kaboom, you live, try again");
+      clicked.push(cell)
+      this.cellIsClicked();
     }
 
     this.setState({
@@ -71,10 +89,9 @@ class App extends React.Component {
     this.countBoats();
     return (
       <div>
-        <Inventory boats={this.state.boats}/>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
-            return(<GridComponent key={key} boat={this.cellHasBoat(key)} index={key} onClick={this.addBoat.bind(this)}/>);
+            return(<GridComponent key={key} click={this.cellIsClicked(key)} boat={this.cellHasBoat(key)} index={key} onClick={this.addBoat.bind(this)}/>);
           }.bind(this))}
         </div>
       </div>);

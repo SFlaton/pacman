@@ -12,6 +12,10 @@ const clickedStyle = {
   backgroundColor: "#cfc",
 }
 
+const headerStyle ={
+  textAlign: "center",
+  fontFamily: "Roboto"
+}
 class App extends React.Component {
   constructor() {
     super();
@@ -101,6 +105,9 @@ class App extends React.Component {
 
     return (
       <div>
+      <div style={headerStyle}>
+      <h1>MineSweeeeeeper!!!!</h1>
+      </div>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
             return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.findBomb.bind(this)}/>);

@@ -49,6 +49,7 @@ class App extends React.Component {
     })
   }
 
+
   getBombIndex(cell) {
     if (this.cellHasBomb(cell)) {
       return this.state.bombs.findIndex(function(bomb) {
@@ -75,22 +76,33 @@ class App extends React.Component {
     });
   }
 
-  countBombs() {
-      for (var i = 0; i < 200; i++ ){
-        if (this.grid[i] === false) {
-          console.log(i);
+  neighbourBombs(key) {
+      let bombsFound = 0
+
+      let coord = [-11, -10, -9, -1, 1, 9, 10, 11]
+      for (let i=0; i < coord.length; i++) {
+        let check = key + coord[i]
+        if (check > -1 ){
+          bombsFound += this.state.bombs.filter(function(bomb){
+            return bomb === check
+          }).length
+
         }
-    }
+      }
+      return bombsFound
   }
+
+
+
 
   render() {
     console.log(this.state);
-    this.countBombs();
+
     return (
       <div>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
-            return(<GridComponent key={key} click={this.cellIsClicked(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.addBomb.bind(this)}/>);
+            return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.addBomb.bind(this)}/>);
           }.bind(this))}
         </div>
       </div>);

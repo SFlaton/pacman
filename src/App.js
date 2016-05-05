@@ -22,9 +22,15 @@ class App extends React.Component {
     };
 
     this.state = {
-      bombs: [1,4,6,14,35,16,27, 55, 88, 24, 84, 90, 95, 29, 30 ],
-      clicked: [],
+      bombs: [], 
+      clicked: []
     };
+
+    console.log("checking this.state.bombs" + this.state.bombs)
+
+    for (let n = 0; n < 15; n++){
+      this.state.bombs.push(Math.floor((Math.random() * 100) + 1))
+    }
   }
 
   cellHasBomb(cell) {

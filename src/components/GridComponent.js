@@ -28,9 +28,14 @@ class GridComponent extends React.Component {
 
   render() {
     let gridStyle = this.getGridStyle();
+    let number;
+    if (this.props.click) {
+      number = this.props.number
+    }
+
 
     return (
-      <div style={gridStyle} onClick={this.onClick.bind(this)}>{this.props.number}</div>
+      <div style={gridStyle} onClick={this.onClick.bind(this)}>{number}</div>
     )
   }
 }

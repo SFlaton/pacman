@@ -1,7 +1,7 @@
 import React from 'react';
 
-class Boat extends React.Component {
-  getBoatStyle() {
+class Bomb extends React.Component {
+  getBombStyle() {
     let width = 38 * this.props.size;
 
     return {
@@ -13,13 +13,13 @@ class Boat extends React.Component {
   }
 
   render() {
-    let boatStyle = this.getBoatStyle();
+    let bombStyle = this.getBombStyle();
     return (
       <div>
-        <div style={boatStyle}></div>
+        <div style={bombStyle}></div>
         <p>{this.props.name}</p>
       </div>);
   }
 }
 
-export default Boat;
+export default Bomb;

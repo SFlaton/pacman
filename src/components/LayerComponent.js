@@ -2,7 +2,7 @@ import React from 'react';
 
 class LayerComponent extends React.Component {
   getBackGroundColor() {
-    if (this.props.boat) {
+    if (this.props.bomb) {
       return "#FF0000";
     }
 

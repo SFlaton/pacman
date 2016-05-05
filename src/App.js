@@ -1,5 +1,4 @@
 import React from 'react';
-import Inventory from './components/Inventory';
 import GridComponent from './components/GridComponent';
 
 const boardStyle = {
@@ -23,21 +22,21 @@ class App extends React.Component {
     };
 
     this.state = {
-      boats: [1,4,6,14,35,16,27, 55, 88, 24, 84, 90, 95, 29, 30 ],
+      bombs: [1,4,6,14,35,16,27, 55, 88, 24, 84, 90, 95, 29, 30 ],
       clicked: [],
     };
   }
 
-  cellHasBoat(cell) {
-    let hasBoat = this.state.boats.filter(function(boat) {
-      if (boat === cell) {
+  cellHasBomb(cell) {
+    let hasBomb = this.state.bombs.filter(function(bomb) {
+      if (bomb === cell) {
         return true;
       } else {
         return false;
       }
     });
 
-    return hasBoat.length > 0;
+    return hasBomb.length > 0;
   }
 
   cellIsClicked(cell) {
@@ -50,20 +49,20 @@ class App extends React.Component {
     })
   }
 
-  getBoatIndex(cell) {
-    if (this.cellHasBoat(cell)) {
-      return this.state.boats.findIndex(function(boat) {
-        return boat === cell;
+  getBombIndex(cell) {
+    if (this.cellHasBomb(cell)) {
+      return this.state.bombs.findIndex(function(bomb) {
+        return bomb === cell;
       });
     }
   }
 
-  addBoat(cell) {
-    let boats = this.state.boats;
+  addBomb(cell) {
+    let bombs = this.state.bombs;
     let clicked = this.state.clicked;
 
-    if (this.cellHasBoat(cell)) {
-      let index = this.getBoatIndex(cell);
+    if (this.cellHasBomb(cell)) {
+      let index = this.getBombIndex(cell);
       alert("KABOOM, YOU DIE!!!!");
     } else {
       alert("no kaboom, you live, try again");
@@ -72,11 +71,11 @@ class App extends React.Component {
     }
 
     this.setState({
-      boats: boats
+      bombs: bombs
     });
   }
 
-  countBoats() {
+  countBombs() {
       for (var i = 0; i < 200; i++ ){
         if (this.grid[i] === false) {
           console.log(i);
@@ -86,12 +85,12 @@ class App extends React.Component {
 
   render() {
     console.log(this.state);
-    this.countBoats();
+    this.countBombs();
     return (
       <div>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
-            return(<GridComponent key={key} click={this.cellIsClicked(key)} boat={this.cellHasBoat(key)} index={key} onClick={this.addBoat.bind(this)}/>);
+            return(<GridComponent key={key} click={this.cellIsClicked(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.addBomb.bind(this)}/>);
           }.bind(this))}
         </div>
       </div>);

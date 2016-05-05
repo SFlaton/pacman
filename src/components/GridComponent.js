@@ -2,7 +2,7 @@ import React from 'react';
 
 class GridComponent extends React.Component {
   getBackGroundColor() {
-    if (this.props.boat) {
+    if (this.props.bomb) {
       return "#ccc";
     }
     if (this.props.click){

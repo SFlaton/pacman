@@ -41,12 +41,10 @@ class App extends React.Component {
 
   cellIsClicked(cell) {
     let isClicked = this.state.clicked.filter(function(click){
-      if (click === cell) {
-        return true;
-      } else{
-        return false;
-      }
-    })
+      return click === cell
+    }).length
+    console.log(isClicked)
+    return isClicked > 0
   }
 
 
@@ -58,22 +56,19 @@ class App extends React.Component {
     }
   }
 
-  addBomb(cell) {
-    let bombs = this.state.bombs;
+  findBomb(cell) {
     let clicked = this.state.clicked;
 
     if (this.cellHasBomb(cell)) {
       let index = this.getBombIndex(cell);
+      console.log(cell);
       alert("KABOOM, YOU DIE!!!!");
     } else {
-      alert("no kaboom, you live, try again");
       clicked.push(cell)
-      this.cellIsClicked();
+      this.setState({
+        clicked: clicked
+      })
     }
-
-    this.setState({
-      bombs: bombs
-    });
   }
 
   neighbourBombs(key) {
@@ -102,8 +97,11 @@ class App extends React.Component {
       <div>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
-            return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.addBomb.bind(this)}/>);
+            return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.findBomb.bind(this)}/>);
           }.bind(this))}
+          <div>
+
+          </div>
         </div>
       </div>);
   }

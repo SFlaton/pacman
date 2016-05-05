@@ -3,10 +3,10 @@ import React from 'react';
 class GridComponent extends React.Component {
   getBackGroundColor() {
     if (this.props.bomb) {
-      return "#ccc";
+      return "blue";
     }
     if (this.props.click){
-      return "#cfc"
+      return "red"
     }
     return "#ccc";
   }

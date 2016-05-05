@@ -4,7 +4,7 @@ import GridComponent from './components/GridComponent';
 
 const boardStyle = {
   width: 400,
-  height: 800,
+  height: 400,
   border: "1px solid #000",
   margin: "auto"
 };
@@ -14,12 +14,12 @@ class App extends React.Component {
     super();
 
     this.grid = [];
-    for (let i=0; i < 200; i++) {
+    for (let i=0; i < 100; i++) {
       this.grid.push(i);
     };
 
     this.state = {
-      boats: [1,2,14,15,16]
+      boats: [1,4,6,14,35,16,27, 55, 88, 24, 84, 90, 95, 29, 30 ]
     };
   }
 
@@ -48,9 +48,9 @@ class App extends React.Component {
 
     if (this.cellHasBoat(cell)) {
       let index = this.getBoatIndex(cell);
-      boats.splice(index, 1);
+      console.log("kaboom");
     } else {
-      boats.push(cell);
+      console.log("no kaboom, you live");
     }
 
     this.setState({
@@ -58,8 +58,17 @@ class App extends React.Component {
     });
   }
 
+  countBoats() {
+      for (var i = 0; i < 200; i++ ){
+        if (this.grid[i] === false) {
+          console.log(i);
+        }
+    }
+  }
+
   render() {
     console.log(this.state);
+    this.countBoats();
     return (
       <div>
         <Inventory boats={this.state.boats}/>

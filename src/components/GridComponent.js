@@ -6,7 +6,7 @@ class GridComponent extends React.Component {
       return "#ccc";
     }
     if (this.props.click){
-      return "green"
+      return "#4CAF50"
     }
     return "#ccc";
   }
@@ -18,7 +18,12 @@ class GridComponent extends React.Component {
       height: "38px",
       backgroundColor: backgroundColor,
       float: "left",
-      border: "1px solid #fff"
+      border: "1px solid #fff",
+      fontSize: "20px",
+      textAlign: "center",
+      fontFamily: "Roboto",
+      opacity: 0.85
+
     };
   }
 

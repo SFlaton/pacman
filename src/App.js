@@ -1,20 +1,23 @@
 import React from 'react';
 import GridComponent from './components/GridComponent';
+import AppBar from 'material-ui/lib/app-bar';
+import RaisedButton from './material-ui/RaisedButton';
 
 const boardStyle = {
   width: 400,
   height: 400,
-  border: "1px solid #000",
-  margin: "auto"
+  border: "1px solid #212121",
+  margin: "auto",
+  marginTop: "80px"
 };
 
 const clickedStyle = {
   backgroundColor: "#cfc",
 }
 
-const headerStyle ={
-  textAlign: "center",
-  fontFamily: "Roboto"
+const headerStyle = {
+  fontFamily: "Roboto",
+  textAlign: "center"
 }
 class App extends React.Component {
   constructor() {
@@ -105,14 +108,13 @@ class App extends React.Component {
 
     return (
       <div>
-      <div style={headerStyle}>
-      <h1>MineSweeeeeeper!!!!</h1>
-      </div>
+      <AppBar title="MineSweeper!"/>
         <div style={boardStyle}>
           {this.grid.map(function(key) {
             return(<GridComponent key={key} click={this.cellIsClicked(key)} number={this.neighbourBombs(key)} bomb={this.cellHasBomb(key)} index={key} onClick={this.findBomb.bind(this)}/>);
           }.bind(this))}
         </div>
+
       </div>);
   }
 }
